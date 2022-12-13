@@ -10,4 +10,4 @@ export const shipFactory = (length) => {
   return { isHit, isSunk };
 };
 
-export const testShip = shipFactory(4);
+

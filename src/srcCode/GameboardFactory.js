@@ -1,16 +1,13 @@
 import { shipFactory } from "./shipFactory";
 export const Gameboard = () => {
   let attackedCoordinates = {};
-  let groupOfShips = {};
+  let groupOfShips = [];
   const createShip = ([x, y], length) => {
     let dummyShip = [[x, y]];
-    for (i = 0; i < length; i++) {
-      dummyShip.concat([x + 1, y]);
+    for (let i = 0; i < length; i++) {
+      dummyShip.concat([x + i, y]);
     }
-    groupOfShips.push({
-      ship: shipFactory(length),
-      shipCoordinates: dummyShip,
-    });
+    groupOfShips.push([shipFactory(length), dummyShip]);
   };
   const receiveAttack = (coor) => {
     attackedCoordinates.append(coor);
@@ -18,8 +15,8 @@ export const Gameboard = () => {
   };
   const allShipsSunk = () => {
     let returnValue = true;
-    groupOfShips.array.forEach((ship) => {
-      returnValue = returnValue && ship.ship.isSunk();
+    groupOfShips.forEach((ship) => {
+      returnValue = returnValue && ship.isSunk();
     });
     return returnValue;
   };
