@@ -15,13 +15,18 @@ export const Gameboard = () => {
       groupOfShips[i][1].forEach((coor) => {
         if (x == coor[0] && y == coor[1]) {
           groupOfShips[i][0].isHit();
-          hits.concat([[x, y]]);
+          hits = hits.concat([[x, y]]);
+
           return;
         }
       });
-      misses.concat([[x, y]]);
-      return;
     }
+    for (let i = 0; i < hits.length; i++) {
+      if (x == hits[i][0] && y == hits[i][1]) {
+        return;
+      }
+    }
+    misses = misses.concat([[x, y]]);
   };
   const allShipsSunk = () => {
     let returnValue = true;
@@ -30,5 +35,17 @@ export const Gameboard = () => {
     });
     return returnValue;
   };
-  return { createShip, allShipsSunk, receiveAttack };
+  const showHits = () => {
+    return hits;
+  };
+  const showMisses = () => {
+    return misses;
+  };
+  return {
+    createShip,
+    allShipsSunk,
+    receiveAttack,
+    showHits,
+    showMisses,
+  };
 };
