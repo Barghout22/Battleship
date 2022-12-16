@@ -41,11 +41,19 @@ export const Gameboard = () => {
   const showMisses = () => {
     return misses;
   };
+  const showShips = () => {
+    let shipCoordinates = [];
+    for (let i = 0; i < groupOfShips.length; i++) {
+      shipCoordinates.push(groupOfShips[i][1]);
+    }
+    return shipCoordinates;
+  };
   return {
     createShip,
     allShipsSunk,
     receiveAttack,
     showHits,
     showMisses,
+    showShips,
   };
 };
