@@ -4,13 +4,22 @@ export const player = (playerName, shipsInput) => {
   const thisGameboard = Gameboard();
   let moves = [];
 
-  const checkShipPlacementValidity = ([x, y], length) => {
+  const checkShipPlacementValidity = ([x, y], length, axis) => {
     const ships = thisGameboard.showShips();
     let checker = undefined;
     for (let i = 0; i < ships.length; i++) {
       for (let j = 0; j < length; j++) {
-        checker ||= ships[i].find((item) => item[0] === x + j && item[1] === y);
-        checker ||= x + j < 1 || x + j > 10;
+        if (axis === "x") {
+          checker ||= ships[i].find(
+            (item) => item[0] === x + j && item[1] === y
+          );
+          checker ||= x + j < 1 || x + j > 10;
+        } else {
+          checker ||= ships[i].find(
+            (item) => item[0] === x && item[1] === y + j
+          );
+          checker ||= y + j < 1 || y + j > 10;
+        }
       }
     }
     if (checker) {
@@ -28,25 +37,37 @@ export const player = (playerName, shipsInput) => {
   if (playerName !== "AI") {
     for (let i = 0; i < shipsInput.length; i++) {
       if (
-        checkShipPlacementValidity(shipsInput[i][0], shipsInput[i][1]) ===
-        "valid"
+        checkShipPlacementValidity(
+          shipsInput[i][0],
+          shipsInput[i][1],
+          shipsInput[i][2]
+        ) === "valid"
       ) {
-        thisGameboard.createShip(shipsInput[i][0], shipsInput[i][1]);
+        thisGameboard.createShip(shipsInput[i][0], shipsInput[i][1]),
+          shipsInput[i][2];
       }
     }
   } else {
     for (let i = 0; i < shipsInput.length; i++) {
       let randomShipPlacement;
+      let randomAxis = ["x", "y"];
       do {
         randomShipPlacement = [
           Math.floor(Math.random() * 10 + 1),
           Math.floor(Math.random() * 10 + 1),
         ];
       } while (
-        checkShipPlacementValidity(randomShipPlacement, shipsInput[i]) ===
-        "invalid"
+        checkShipPlacementValidity(
+          randomShipPlacement,
+          shipsInput[i],
+          randomAxis[Math.round(Math.random())]
+        ) === "invalid"
       );
-      thisGameboard.createShip(randomShipPlacement, shipsInput[i]);
+      thisGameboard.createShip(
+        randomShipPlacement,
+        shipsInput[i],
+        randomAxis[Math.round(Math.random())]
+      );
     }
   }
 

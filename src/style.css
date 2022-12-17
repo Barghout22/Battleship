@@ -1,0 +1,8 @@
+@font-face {
+  font-family: "MyFont";
+  src: url("./PressStart2P-Regular.ttf");
+}
+
+.display {
+  font-family: "MyFont";
+}

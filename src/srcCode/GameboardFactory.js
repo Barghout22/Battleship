@@ -3,10 +3,14 @@ export const Gameboard = () => {
   let hits = [];
   let misses = [];
   let groupOfShips = [];
-  const createShip = ([x, y], length) => {
+  const createShip = ([x, y], length, axis) => {
     let dummyShip = [[x, y]];
     for (let i = 1; i < length; i++) {
-      dummyShip = dummyShip.concat([[x + i, y]]);
+      if (axis === "x") {
+        dummyShip = dummyShip.concat([[x + i, y]]);
+      } else {
+        dummyShip = dummyShip.concat([[x, y + i]]);
+      }
     }
     groupOfShips.push([shipFactory(length), dummyShip]);
   };
