@@ -10,6 +10,7 @@ export const player = (playerName, shipsInput) => {
     for (let i = 0; i < ships.length; i++) {
       for (let j = 0; j < length; j++) {
         checker ||= ships[i].find((item) => item[0] === x + j && item[1] === y);
+        checker ||= x + j < 1 || x + j > 10;
       }
     }
     if (checker) {

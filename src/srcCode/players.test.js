@@ -5,6 +5,7 @@ const playerTestMoves = [
   [[5, 2], 4],
   [[4, 3], 3],
   [[1, 1], 2],
+  [[9, 1], 3],
 ];
 const testPlayer1 = player("Mahmoud", playerTestMoves);
 const testPlayer2 = player("AI", [5, 4, 3, 2, 1]);
@@ -22,4 +23,3 @@ test("player attacking:", () => {
 test("does the ship placement algo prevent repetitive coordinates?;", () => {
   expect(testPlayer1.thisGameboard.showShips().length).toBe(3);
 });
-
