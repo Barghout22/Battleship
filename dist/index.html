@@ -4,11 +4,40 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../src/style.css" />
-    <script src="../src/index.js" defer></script>
-    <title>Battleship</title>
+    <script src="./main.js" defer></script>
+    <title>My Battleship Game</title>
   </head>
   <body>
-    <div class="display">hello</div>
+    <div class="baseContainer">
+      <div class="gameTitle">
+        <div class="upperTitle">Battleship</div>
+        <div class="playerName1">Player1</div>
+        <div class="playerName2">A.I</div>
+      </div>
+      <div class="gameContainer">
+        <div class="player1GameBoard"></div>
+        <div class="player2GameBoard"></div>
+        <div class="displaySentence">The Game Begins!</div>
+      </div>
+      <div class="legends">
+        <h1>Legends</h1>
+        <div class="legendBlock">
+          <div class="occupiedLegend"></div>
+          <p>occupied spots</p>
+        </div>
+        <div class="legendBlock">
+          <div class="hitAttacksLegend"></div>
+          <p>hits landed</p>
+        </div>
+        <div class="legendBlock">
+          <div class="missedLegend"></div>
+          <p>missed attacks</p>
+        </div>
+        <div class="legendBlock">
+          <div class="sunkLegend"></div>
+          <p>sunk ships</p>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

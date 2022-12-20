@@ -27,10 +27,11 @@ export const Gameboard = () => {
     }
     for (let i = 0; i < hits.length; i++) {
       if (x == hits[i][0] && y == hits[i][1]) {
-        return;
+        return true;
       }
     }
     misses = misses.concat([[x, y]]);
+    return false;
   };
   const allShipsSunk = () => {
     let returnValue = true;
@@ -52,6 +53,13 @@ export const Gameboard = () => {
     }
     return shipCoordinates;
   };
+  const showAllCoordinates = () => {
+    let shipCoordinates = [];
+    for (let i = 0; i < groupOfShips.length; i++) {
+      shipCoordinates.push(...groupOfShips[i][1]);
+    }
+    return shipCoordinates;
+  };
   return {
     createShip,
     allShipsSunk,
@@ -59,5 +67,6 @@ export const Gameboard = () => {
     showHits,
     showMisses,
     showShips,
+    showAllCoordinates,
   };
 };

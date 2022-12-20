@@ -7,16 +7,20 @@ testGameboard.createShip([1, 2], 4, "y");
 test("are all ships sunk?", () => {
   expect(testGameboard.allShipsSunk()).toBe(false);
 });
-
+console.log(testGameboard.showShips());
+console.log(testGameboard.showAllCoordinates());
+test("do hits return value ?", () => {
+  expect(testGameboard.receiveAttack(1, 2)).toBe(true);
+});
 describe("testing if all ships are sunk after hits", () => {
   beforeEach(() => {
-    testGameboard.receiveAttack(1, 2);
     testGameboard.receiveAttack(2, 2);
     testGameboard.receiveAttack(3, 2);
     testGameboard.receiveAttack(4, 2);
     testGameboard.receiveAttack(1, 3);
     testGameboard.receiveAttack(1, 4);
     testGameboard.receiveAttack(1, 5);
+    testGameboard.receiveAttack(1, 6);
     testGameboard.receiveAttack(5, 2);
     testGameboard.receiveAttack(6, 3);
 
@@ -30,6 +34,6 @@ describe("testing if all ships are sunk after hits", () => {
     expect(testGameboard.showHits()[0]).toEqual([1, 2]);
   });
   test("what are my Misses ?", () => {
-    expect(testGameboard.showMisses()[0]).toEqual([5, 2]);
+    expect(testGameboard.showMisses()[0]).toEqual([1, 6]);
   });
 });

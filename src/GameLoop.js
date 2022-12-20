@@ -5,11 +5,11 @@ import {
   displayBoards,
   displayResult,
 } from "./domInteraction";
-const GameLoop = (playerName, ShipArrangement) => {
+export const GameLoop = (playerName, ShipArrangement, arrangementInputAI) => {
   const player1 = player(playerName, ShipArrangement);
-  const AI = player("AI", ShipArrangement);
+  const AI = player("AI", arrangementInputAI);
   let playerTurn = true;
-  intiateGameboards(player1, AI);
+  intiateGameboards(player1);
 
   while (
     !player1.thisGameboard.allShipsSunk() &&
@@ -22,7 +22,10 @@ const GameLoop = (playerName, ShipArrangement) => {
       AI.thisGameboard.receiveAttack(attack);
       playerTurn = false;
     } else {
-      attack = AI.playerAttack();
+      setTimeout(() => {
+        attack = AI.playerAttack();
+      }, 1000);
+
       player1.thisGameboard.receiveAttack(attack);
       playerTurn = true;
     }
