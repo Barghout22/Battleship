@@ -6,12 +6,13 @@ const playerTestMoves = [
   [[4, 3], 3, "y"],
   [[2, 1], 3, "y"],
   [[7, 1], 2, "x"],
-  [[1, 1], 4, "y"],
+  [[1, 2], 4, "y"],
 ];
 const testPlayer1 = player("Mahmoud", playerTestMoves);
 const testPlayer2 = player("AI", [5, 4, 3, 2, 1]);
 
-console.log(testPlayer1.thisGameboard.showShips());
+// console.log(testPlayer1.thisGameboard.showShips());
+// console.log(testPlayer2.thisGameboard.showShips());
 // console.log(testPlayer2.thisGameboard.showShips());
 testPlayer1.playerAttack([1, 2]);
 testPlayer1.playerAttack([3, 4]);

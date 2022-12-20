@@ -4,6 +4,7 @@ import {
   getattack,
   displayBoards,
   displayResult,
+  bottomDisplayText,
 } from "./domInteraction";
 export const GameLoop = (playerName, ShipArrangement, arrangementInputAI) => {
   const player1 = player(playerName, ShipArrangement);
@@ -17,11 +18,14 @@ export const GameLoop = (playerName, ShipArrangement, arrangementInputAI) => {
   ) {
     let attack;
     if (playerTurn) {
-      attack = getattack();
-      while (!player1.playerAttack(attack)) {}
+      bottomDisplayText(player1.thisPlayerName);
+      do {
+        attack = getattack();
+      } while (!player1.playerAttack(attack));
       AI.thisGameboard.receiveAttack(attack);
       playerTurn = false;
     } else {
+      bottomDisplayText(AI.thisPlayerName);
       setTimeout(() => {
         attack = AI.playerAttack();
       }, 1000);

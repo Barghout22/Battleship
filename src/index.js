@@ -1,12 +1,12 @@
 import "./style.css";
 import { GameLoop } from "./GameLoop";
-let player1 = "mahmoud";
+let player1 = "Mahmoud";
 let shipPlacement = [
   [[1, 1], 5, "x"],
-  [[5, 2], 4, "x"],
-  [[4, 3], 3, "y"],
-  [[2, 1], 3, "y"],
-  [[7, 1], 2, "x"],
+  [[6, 3], 4, "x"],
+  [[4, 4], 3, "y"],
+  [[2, 3], 3, "y"],
+  [[8, 8], 2, "x"],
 ];
 let AiPlacement = [5, 4, 3, 3, 2];
 

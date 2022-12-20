@@ -43,8 +43,11 @@ export const player = (playerName, shipsInput) => {
           shipsInput[i][2]
         ) === "valid"
       ) {
-        thisGameboard.createShip(shipsInput[i][0], shipsInput[i][1]),
-          shipsInput[i][2];
+        thisGameboard.createShip(
+          shipsInput[i][0],
+          shipsInput[i][1],
+          shipsInput[i][2]
+        );
       }
     }
   } else {
