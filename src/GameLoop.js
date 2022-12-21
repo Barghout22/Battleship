@@ -18,7 +18,9 @@ export const GameLoop = (playerName, ShipArrangement, arrangementInputAI) => {
   ) {
     let attack;
     if (playerTurn) {
-      bottomDisplayText(player1.thisPlayerName);
+      setTimeout(() => {
+        bottomDisplayText(player1.thisPlayerName);
+      }, 5000);
       do {
         attack = getattack();
       } while (!player1.playerAttack(attack));
@@ -28,7 +30,7 @@ export const GameLoop = (playerName, ShipArrangement, arrangementInputAI) => {
       bottomDisplayText(AI.thisPlayerName);
       setTimeout(() => {
         attack = AI.playerAttack();
-      }, 1000);
+      }, 2000);
 
       player1.thisGameboard.receiveAttack(attack);
       playerTurn = true;

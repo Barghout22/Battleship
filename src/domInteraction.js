@@ -42,7 +42,13 @@ function intiateGameboards(player1) {
     }
   }
 }
-function getattack() {}
+function getattack() {
+  const slots = document.querySelectorAll(".enemySpot");
+  slots.forEach((slot) => slot.classList.add("enemySlot"));
+  slots.forEach();
+  // let attack=prompt("enter an attack value")
+  // return attack;
+}
 function displayBoards(player1, player2) {
   intiateGameboards(player1);
   displayHitsAndMisses(
@@ -57,7 +63,13 @@ function displayBoards(player1, player2) {
   );
   //add sunk values
 }
-function displayResult() {}
+function displayResult() {
+  player2Board = document.querySelectorAll(".enemySpot");
+  player2Board.forEach((Element) => Element.classList.add("enemySlot"));
+  player2Board.forEach((Element) =>
+    Element.addEventListener("click", returnValue)
+  );
+}
 
 function bottomDisplayText(name) {
   const displaySentence = document.querySelector(".displaySentence");
@@ -86,3 +98,7 @@ function displayHitsAndMisses(hits, misses, offset) {
     affectedElement.classList.add("missed");
   }
 }
+
+// function returnValue(e) {
+//   const desiredValue=e.
+// }
