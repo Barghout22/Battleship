@@ -1,17 +1,17 @@
 import { player } from "./players";
 
 const playerTestMoves = [
-  [[1, 1], 5, "x"],
-  [[5, 2], 4, "x"],
-  [[4, 3], 3, "y"],
-  [[2, 1], 3, "y"],
-  [[7, 1], 2, "x"],
-  [[1, 2], 4, "y"],
+  [[10, 10], 20, "x"],
+  [[7, 1], 10, "x"],
+  [[4, 8], 10, "y"],
+  [[2, 8], 10, "y"],
+  [[9, 1], 10, "x"],
+  [[1, 8], 10, "y"],
 ];
 const testPlayer1 = player("Mahmoud", playerTestMoves);
 const testPlayer2 = player("AI", [5, 4, 3, 2, 1]);
 
- console.log(testPlayer1.thisGameboard.showShips());
+console.log(testPlayer1.thisGameboard.showShips());
 // console.log(testPlayer2.thisGameboard.showShips());
 // console.log(testPlayer2.thisGameboard.showShips());
 testPlayer1.playerAttack([1, 2]);

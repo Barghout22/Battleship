@@ -6,8 +6,8 @@ export const player = (playerName, shipsInput) => {
 
   const checkShipPlacementValidity = ([x, y], length, axis) => {
     const ships = thisGameboard.showShips();
-    let checker = undefined;
-    for (let i = 0; i < ships.length; i++) {
+    let checker = false;
+    for (let i = 0; i <ships.length; i++) {
       for (let j = 0; j < length; j++) {
         if (axis === "x") {
           checker ||= ships[i].find(

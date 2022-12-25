@@ -24,8 +24,8 @@ describe("testing if all ships are sunk after hits", () => {
     testGameboard.receiveAttack(5, 2);
     testGameboard.receiveAttack(6, 3);
 
-    console.log(testGameboard.showHits());
-    console.log(testGameboard.showMisses());
+    // console.log(testGameboard.showHits());
+    // console.log(testGameboard.showMisses());
     return;
   });
 

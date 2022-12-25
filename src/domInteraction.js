@@ -7,6 +7,9 @@ function intiateGameboards(player1) {
   // clearAll(player2Board);
   const playerName = document.querySelector(".playerName1");
   playerName.textContent = `${player1.thisPlayerName}'s board`;
+  setTimeout(() => {
+    bottomDisplayText(player1.thisPlayerName);
+  }, 2000);
   const shipPlacement = player1.thisGameboard.showAllCoordinates();
   //console.log(shipPlacement);
 
@@ -35,7 +38,6 @@ function intiateGameboards(player1) {
       player2Board.appendChild(div2);
     }
   }
-  bottomDisplayText(player1.thisPlayerName);
 }
 // function getattack() {
 //   const slots = document.querySelectorAll(".enemySpot");
