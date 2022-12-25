@@ -1,10 +1,4 @@
-export {
-  intiateGameboards,
-  getattack,
-  displayBoards,
-  displayResult,
-  bottomDisplayText,
-};
+export { intiateGameboards, displayBoards, displayResult, bottomDisplayText };
 
 function intiateGameboards(player1) {
   const player1Board = document.querySelector(".player1GameBoard");
@@ -19,7 +13,7 @@ function intiateGameboards(player1) {
   for (let i = 1; i <= 10; i++) {
     for (let j = 1; j <= 10; j++) {
       const div1 = document.createElement("div");
-      div1.setAttribute("id", `${i},${j}`);
+      div1.setAttribute("id", `${j},${i}`);
       let checker = false;
       shipPlacement.forEach((ship) => {
         if (i === ship[1] && j === ship[0]) {
@@ -42,33 +36,40 @@ function intiateGameboards(player1) {
     }
   }
 }
-function getattack() {
-  const slots = document.querySelectorAll(".enemySpot");
-  slots.forEach((slot) => slot.classList.add("enemySlot"));
-  slots.forEach();
-  // let attack=prompt("enter an attack value")
-  // return attack;
-}
+// function getattack() {
+//   const slots = document.querySelectorAll(".enemySpot");
+//   slots.forEach((slot) => slot.classList.add("enemySlot"));
+//   slots.forEach((slot) =>
+//     slot.addEventListener("click", () => returnValue(slot))
+//   );
+// let attack=prompt("enter an attack value")
+// return attack;
+// }
 function displayBoards(player1, player2) {
   intiateGameboards(player1);
-  displayHitsAndMisses(
-    player1.thisGameboard.showHits(),
-    player1.thisGameboard.showMisses(),
-    0
-  );
-  displayHitsAndMisses(
-    player2.thisGameboard.showHits(),
-    player2.thisGameboard.showMisses(),
-    10
-  );
+  if (player1.thisGameboard.showHits() || player1.thisGameboard.showMisses()) {
+    displayHitsAndMisses(
+      player1.thisGameboard.showHits(),
+      player1.thisGameboard.showMisses(),
+      0
+    );
+  }
+  if (player2.thisGameboard.showHits() || player2.thisGameboard.showMisses()) {
+    displayHitsAndMisses(
+      player2.thisGameboard.showHits(),
+      player2.thisGameboard.showMisses(),
+      10
+    );
+  }
+
   //add sunk values
 }
 function displayResult() {
-  player2Board = document.querySelectorAll(".enemySpot");
-  player2Board.forEach((Element) => Element.classList.add("enemySlot"));
-  player2Board.forEach((Element) =>
-    Element.addEventListener("click", returnValue)
-  );
+  // player2Board = document.querySelectorAll(".enemySpot");
+  // player2Board.forEach((Element) => Element.classList.add("enemySlot"));
+  // player2Board.forEach((Element) =>
+  //   Element.addEventListener("click", returnValue)
+  // );
 }
 
 function bottomDisplayText(name) {
@@ -84,21 +85,27 @@ function clearAll(playerDomNode) {
 
 function displayHitsAndMisses(hits, misses, offset) {
   for (let i = 0; i < hits.length; i++) {
-    const affectedElement = document.querySelector(
-      `#${hits[i][1] + offset},${hits[i][0] + offset}`
+    const affectedElement1 = document.getElementById(
+      `${hits[i][1] + offset},${hits[i][0] + offset}`
     );
-    affectedElement.className = " ";
-    affectedElement.classList.add("hitAttacks");
+
+    affectedElement1.className = " ";
+    affectedElement1.classList.add("hitAttacks");
   }
   for (let i = 0; i < misses.length; i++) {
-    const affectedElement = document.querySelector(
-      `#${misses[i][1] + offset},${misses[i][0] + offset}`
+    const affectedElement2 = document.getElementById(
+      `${misses[i][1] + offset},${misses[i][0] + offset}`
     );
-    affectedElement.className = " ";
-    affectedElement.classList.add("missed");
+    //console.log(affectedElement2);
+    affectedElement2.className = " ";
+    affectedElement2.classList.add("missed");
   }
 }
 
-// function returnValue(e) {
-//   const desiredValue=e.
+// function returnValue(Element) {
+//   let desiredValue = Element.getAttribute("id").split(",");
+//   desiredValue = [Number(desiredValue[0]) - 10, Number(desiredValue[1]) - 10];
+//   Element.className = " ";
+//   Element.classList.add("hitAttacks");
+//   console.log(desiredValue);
 // }
