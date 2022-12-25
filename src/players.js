@@ -7,19 +7,24 @@ export const player = (playerName, shipsInput) => {
   const checkShipPlacementValidity = ([x, y], length, axis) => {
     const ships = thisGameboard.showShips();
     let checker = false;
-    for (let i = 0; i <ships.length; i++) {
+    for (let i = 0; i < ships.length; i++) {
       for (let j = 0; j < length; j++) {
         if (axis === "x") {
           checker ||= ships[i].find(
             (item) => item[0] === x + j && item[1] === y
           );
-          checker ||= x + j < 1 || x + j > 10;
         } else {
           checker ||= ships[i].find(
             (item) => item[0] === x && item[1] === y + j
           );
-          checker ||= y + j < 1 || y + j > 10;
         }
+      }
+    }
+    for (let counter = 0; counter < length; counter++) {
+      if (axis === "x") {
+        checker ||= x + counter < 1 || x + counter > 10;
+      } else {
+        checker ||= y + counter < 1 || y + counter > 10;
       }
     }
     if (checker) {
