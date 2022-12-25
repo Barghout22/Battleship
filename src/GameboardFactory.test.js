@@ -8,7 +8,7 @@ test("are all ships sunk?", () => {
   expect(testGameboard.allShipsSunk()).toBe(false);
 });
 // console.log(testGameboard.showShips());
- console.log(testGameboard.showAllCoordinates());
+// console.log(testGameboard.showAllCoordinates());
 test("do hits return value ?", () => {
   expect(testGameboard.receiveAttack(1, 2)).toBe(true);
 });

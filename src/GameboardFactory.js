@@ -20,8 +20,6 @@ export const Gameboard = () => {
         if (x == coor[0] && y == coor[1]) {
           groupOfShips[i][0].isHit();
           hits = hits.concat([[x, y]]);
-
-          return;
         }
       });
     }
@@ -47,11 +45,11 @@ export const Gameboard = () => {
     return misses;
   };
   const showShips = () => {
-    let shipCoordinates = [];
+    let shipInfo = [];
     for (let i = 0; i < groupOfShips.length; i++) {
-      shipCoordinates.push(groupOfShips[i][1]);
+      shipInfo.push(groupOfShips[i][1]);
     }
-    return shipCoordinates;
+    return shipInfo;
   };
   const showAllCoordinates = () => {
     let shipCoordinates = [];

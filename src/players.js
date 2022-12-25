@@ -54,23 +54,22 @@ export const player = (playerName, shipsInput) => {
     for (let i = 0; i < shipsInput.length; i++) {
       let randomShipPlacement;
       let randomAxis = ["x", "y"];
+      let currentAxis;
+
       do {
         randomShipPlacement = [
-          Math.floor(Math.random() * 10 + 1),
-          Math.floor(Math.random() * 10 + 1),
+          Math.floor(Math.random() * 10) + 1,
+          Math.floor(Math.random() * 10) + 1,
         ];
+        currentAxis = randomAxis[Math.round(Math.random())];
       } while (
         checkShipPlacementValidity(
           randomShipPlacement,
           shipsInput[i],
-          randomAxis[Math.round(Math.random())]
+          currentAxis
         ) === "invalid"
       );
-      thisGameboard.createShip(
-        randomShipPlacement,
-        shipsInput[i],
-        randomAxis[Math.round(Math.random())]
-      );
+      thisGameboard.createShip(randomShipPlacement, shipsInput[i], currentAxis);
     }
   }
 
