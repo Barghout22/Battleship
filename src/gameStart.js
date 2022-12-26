@@ -26,15 +26,15 @@ export function gameStarter() {
   const placementSpots = document.querySelectorAll(".emptySelectionSlot");
   switchAxis.addEventListener("click", () => {
     axis === "x" ? (axis = "y") : (axis = "x");
-    console.log(axis);
+    //console.log(axis);
   });
   placementSpots.forEach((spot) =>
     spot.addEventListener("click", () => {
-      console.log(shipCoordinatePool);
+      //console.log(shipCoordinatePool);
       if (placementCounter < 5) {
         let desiredInput = spot.getAttribute("id").split(",");
         desiredInput = [Number(desiredInput[0]), Number(desiredInput[1])];
-        console.log(desiredInput);
+        //console.log(desiredInput);
         if (
           checkShipPlacementValidity(
             desiredInput,
@@ -43,31 +43,34 @@ export function gameStarter() {
           ) === "valid"
         ) {
           placeShip(desiredInput, AiPlacement[placementCounter], axis);
-          placementCounter++;
           spot.className = " ";
           spot.classList.add("occupied");
-          for (let i = 1; i <= AiPlacement[placementCounter]; i++) {
+          for (let i = 1; i <AiPlacement[placementCounter]; i++) {
             if (axis === "x") {
               let element = document.getElementById(
                 `${desiredInput[0] + i},${desiredInput[1]}`
               );
               element.className = " ";
               element.classList.add("occupied");
+              console.log(`${desiredInput[0] + i},${desiredInput[1]}`);
             } else {
               let element = document.getElementById(
                 `${desiredInput[0]},${desiredInput[1] + i}`
               );
               element.className = " ";
               element.classList.add("occupied");
+              console.log(`${desiredInput[0]},${desiredInput[1] + i}`);
             }
           }
+          placementCounter++;
         }
         if (placementCounter >= 5) {
-          clearAll(selectionGameboard);
-          console.log(ships);
-          const gameStartDiv = document.querySelector(".gameStartDiv");
-          gameStartDiv.classList.remove("show");
-          GameLoop(player1, ships, AiPlacement);
+          setTimeout(() => {
+            clearAll(selectionGameboard);
+            const gameStartDiv = document.querySelector(".gameStartDiv");
+            gameStartDiv.classList.remove("show");
+            GameLoop(player1, ships, AiPlacement);
+          }, 1000);
         }
       }
     })

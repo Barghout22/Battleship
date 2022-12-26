@@ -16,15 +16,15 @@ export const GameLoop = (
   intiateGameboards(player1);
   const slots = document.querySelectorAll(".enemySlot");
 
-
   // console.log(player1.thisGameboard.showShips());
-   console.log(AI.thisGameboard.showShips());
+  console.log(AI.thisGameboard.showShips());
 
   slots.forEach((slot) =>
     slot.addEventListener("click", () => {
       if (
         !player1.thisGameboard.allShipsSunk() &&
-        !AI.thisGameboard.allShipsSunk()
+        !AI.thisGameboard.allShipsSunk() &&
+        slot.classList.contains("enemySlot")
       ) {
         if (playerTurn) {
           playerTurn = false;
@@ -62,7 +62,7 @@ export const GameLoop = (
             if (player1.thisGameboard.allShipsSunk()) {
               displayResult(AI.thisPlayerName);
             }
-          }, 2000);
+          }, 1000);
         }
       }
     })
