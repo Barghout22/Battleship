@@ -111,7 +111,8 @@ body {
   background-color: #7dd3fc;
 }
 
-.enemySlot:hover {
+.enemySlot:hover,
+.emptySelectionSlot:hover {
   background-color: #0ea5e9;
   margin: 10%;
 }
@@ -170,7 +171,7 @@ body {
   grid-template: 1fr 6fr 1fr/1fr 4fr 1fr;
 }
 
-.confirmSelection,
+.switchAxis,
 .randomize {
   font-size: 2rem;
   background-color: white;
@@ -180,7 +181,7 @@ body {
   cursor: pointer;
 }
 
-.confirmSelection:hover,
+.switchAxis:hover,
 .randomize:hover {
   color: white;
   background-color: black;

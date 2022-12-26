@@ -18,7 +18,7 @@ export const GameLoop = (
 
 
   // console.log(player1.thisGameboard.showShips());
-  // console.log(AI.thisGameboard.showShips());
+   console.log(AI.thisGameboard.showShips());
 
   slots.forEach((slot) =>
     slot.addEventListener("click", () => {
