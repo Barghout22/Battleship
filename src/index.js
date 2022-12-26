@@ -9,7 +9,7 @@ let shipPlacement = [
   [[8, 8], 2, "x"],
 ];
 let AiPlacement = [5, 4, 3, 3, 2];
-GameLoop(player1, shipPlacement, AiPlacement);
+GameLoop(player1, AiPlacement, AiPlacement, true);
 
 // function create() {
 //   const div = document.createElement("div");

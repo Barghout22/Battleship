@@ -1,5 +1,5 @@
 import { Gameboard } from "./GameboardFactory";
-export const player = (playerName, shipsInput) => {
+export const player = (playerName, shipsInput, randomize) => {
   const thisPlayerName = playerName;
   const thisGameboard = Gameboard();
   let moves = [];
@@ -39,7 +39,7 @@ export const player = (playerName, shipsInput) => {
     return "valid";
   };
 
-  if (playerName !== "AI") {
+  if (playerName !== "AI" && !randomize) {
     for (let i = 0; i < shipsInput.length; i++) {
       if (
         checkShipPlacementValidity(
