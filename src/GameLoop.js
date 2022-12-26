@@ -4,12 +4,18 @@ import {
   displayResult,
   bottomDisplayText,
 } from "./domInteraction";
-export const GameLoop = (playerName, ShipArrangement, arrangementInputAI,playerRandomizeInput) => {
+export const GameLoop = (
+  playerName,
+  ShipArrangement,
+  arrangementInputAI,
+  playerRandomizeInput
+) => {
   const player1 = player(playerName, ShipArrangement, playerRandomizeInput);
   const AI = player("AI", arrangementInputAI);
   let playerTurn = true;
   intiateGameboards(player1);
   const slots = document.querySelectorAll(".enemySlot");
+
 
   // console.log(player1.thisGameboard.showShips());
   // console.log(AI.thisGameboard.showShips());
@@ -36,7 +42,7 @@ export const GameLoop = (playerName, ShipArrangement, arrangementInputAI,playerR
             : slot.classList.add("missed");
 
           if (AI.thisGameboard.allShipsSunk()) {
-            bottomDisplayText(`${player1.thisPlayerName} won`);
+            displayResult(player1.thisPlayerName);
             return;
           }
 
@@ -54,7 +60,7 @@ export const GameLoop = (playerName, ShipArrangement, arrangementInputAI,playerR
               : attackSpot.classList.add("missed");
             playerTurn = true;
             if (player1.thisGameboard.allShipsSunk()) {
-              bottomDisplayText("computer won");
+              displayResult(AI.thisPlayerName);
             }
           }, 2000);
         }

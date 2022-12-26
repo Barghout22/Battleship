@@ -40,9 +40,13 @@ function intiateGameboards(player1) {
   }
 }
 
-function displayResult() {
+function displayResult(name) {
   const displaySentence = document.querySelector(".displaySentence");
   displaySentence.textContent = ` `;
+  const winingDiv = document.querySelector(".endgameMessage");
+  const winningMessage = document.querySelector(".winningMessage");
+  winningMessage.textContent = `${name} wins`;
+  winingDiv.classList.add("show");
 }
 
 function bottomDisplayText(name) {

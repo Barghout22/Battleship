@@ -1,6 +1,6 @@
 import "./style.css";
 import { GameLoop } from "./GameLoop";
-let player1 = "Mahmoud";
+let player1 = "player";
 let shipPlacement = [
   [[1, 1], 5, "x"],
   [[6, 3], 4, "x"],
@@ -8,8 +8,24 @@ let shipPlacement = [
   [[2, 3], 3, "y"],
   [[8, 8], 2, "x"],
 ];
+let randomize = true;
 let AiPlacement = [5, 4, 3, 3, 2];
-GameLoop(player1, AiPlacement, AiPlacement, true);
+if (randomize) {
+  GameLoop(player1, AiPlacement, AiPlacement, randomize);
+} else {
+  GameLoop(player1, shipPlacement, AiPlacement);
+}
+
+const restartButton = document.querySelector("#restartButton");
+restartButton.addEventListener("click", () => {
+  const winingDiv = document.querySelector(".endgameMessage");
+  winingDiv.classList.remove("show");
+  if (randomize) {
+    GameLoop(player1, AiPlacement, AiPlacement, randomize);
+  } else {
+    GameLoop(player1, shipPlacement, AiPlacement);
+  }
+});
 
 // function create() {
 //   const div = document.createElement("div");

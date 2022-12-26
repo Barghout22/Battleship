@@ -58,8 +58,8 @@ body {
 .player1GameBoard,
 .player2GameBoard {
   display: grid;
-  grid-template-columns: repeat(10, minmax(50px, 1fr));
-  grid-template-rows: repeat(10, minmax(50px, 1fr));
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(10, 1fr);
   gap: 2%;
 }
 .displaySentence {
@@ -68,7 +68,7 @@ body {
 .legends {
   grid-area: 2/2/3/3;
   display: grid;
-  grid-template-columns: 100%;
+  grid-template-columns: 1fr;
   grid-template-rows: repeat(6, 1fr);
 }
 
@@ -113,4 +113,37 @@ body {
 .enemySlot:hover {
   background-color: #0ea5e9;
   margin: 10%;
+}
+
+.endgameMessage {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 5rem;
+  padding: 1em;
+}
+#restartButton {
+  font-size: 3rem;
+  background-color: white;
+  border: 1px solid black;
+  padding: 0.25em 0.5em;
+  cursor: pointer;
+}
+
+#restartButton:hover {
+  color: white;
+  background-color: black;
+  border-color: white;
+}
+
+.endgameMessage.show {
+  display: flex;
 }
