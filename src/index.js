@@ -1,5 +1,6 @@
 import "./style.css";
 import { GameLoop } from "./GameLoop";
+import { clearAll } from "./domInteraction";
 let player1 = "player";
 let shipPlacement = [
   [[1, 1], 5, "x"],
@@ -8,13 +9,24 @@ let shipPlacement = [
   [[2, 3], 3, "y"],
   [[8, 8], 2, "x"],
 ];
-let randomize = true;
 let AiPlacement = [5, 4, 3, 3, 2];
-if (randomize) {
-  GameLoop(player1, AiPlacement, AiPlacement, randomize);
-} else {
-  GameLoop(player1, shipPlacement, AiPlacement);
+const selectionGameboard = document.querySelector(".selectionGameboard");
+for (let i = 1; i <= 10; i++) {
+  for (let j = 1; j <= 10; j++) {
+    const div1 = document.createElement("div");
+    div1.setAttribute("id", `${j},${i}`);
+    div1.classList.add("emptySelectionSlot");
+    selectionGameboard.appendChild(div1);
+  }
 }
+
+const randomizeButton = document.querySelector(".randomize");
+randomizeButton.addEventListener("click", () => {
+  clearAll(selectionGameboard);
+  const gameStartDiv = document.querySelector(".gameStartDiv");
+  gameStartDiv.classList.remove("show");
+  GameLoop(player1, AiPlacement, AiPlacement, true);
+});
 
 const restartButton = document.querySelector("#restartButton");
 restartButton.addEventListener("click", () => {
@@ -26,11 +38,3 @@ restartButton.addEventListener("click", () => {
     GameLoop(player1, shipPlacement, AiPlacement);
   }
 });
-
-// function create() {
-//   const div = document.createElement("div");
-//   div.textContent = "hello";
-//   div.classList.add("display");
-//   return div;
-// }
-// document.body.appendChild(create());

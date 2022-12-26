@@ -1,4 +1,4 @@
-export { intiateGameboards, displayResult, bottomDisplayText };
+export { intiateGameboards, displayResult, bottomDisplayText, clearAll };
 
 function intiateGameboards(player1) {
   const player1Board = document.querySelector(".player1GameBoard");

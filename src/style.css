@@ -106,7 +106,8 @@ body {
   margin: 10px;
 }
 
-.emptySlot {
+.emptySlot,
+.emptySelectionSlot {
   background-color: #7dd3fc;
 }
 
@@ -115,6 +116,7 @@ body {
   margin: 10%;
 }
 
+.gameStartDiv,
 .endgameMessage {
   position: fixed;
   top: 0;
@@ -146,4 +148,64 @@ body {
 
 .endgameMessage.show {
   display: flex;
+}
+.gameStartDiv {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: white;
+  color: black;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  padding: 1em;
+}
+
+.gameStartDiv.show {
+  display: grid;
+  grid-template: 1fr 6fr 1fr/1fr 4fr 1fr;
+}
+
+.confirmSelection,
+.randomize {
+  font-size: 2rem;
+  background-color: white;
+  border: 1px solid black;
+  padding: 0.25em 0.5em;
+  margin: 0.5em;
+  cursor: pointer;
+}
+
+.confirmSelection:hover,
+.randomize:hover {
+  color: white;
+  background-color: black;
+  border-color: white;
+}
+
+.startGameButtons {
+  grid-area: 3/2/4/3;
+  display: flex;
+  justify-content: space-around;
+  padding: 1em;
+}
+
+.selectionGameboard {
+  grid-area: 2/2/3/3;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+  gap: 2%;
+  width: 70%;
+  height: 100%;
+  padding: 10rem;
+}
+
+.shipPlacementTop {
+  text-align: center;
+  grid-area: 1/2/2/3;
 }
