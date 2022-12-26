@@ -117,7 +117,7 @@ export function gameStarter() {
         dummyShip.push([x, y + i]);
       }
     }
-    shipCoordinatePool.push(...dummyShip);
+    shipCoordinatePool.push(dummyShip);
     ships.push([[x, y], length, axis]);
   }
 }
