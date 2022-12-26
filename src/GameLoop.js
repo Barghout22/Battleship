@@ -11,8 +11,8 @@ export const GameLoop = (playerName, ShipArrangement, arrangementInputAI) => {
   intiateGameboards(player1);
   const slots = document.querySelectorAll(".enemySlot");
 
-  console.log(player1.thisGameboard.showShips());
-  console.log(AI.thisGameboard.showShips());
+  // console.log(player1.thisGameboard.showShips());
+  // console.log(AI.thisGameboard.showShips());
 
   slots.forEach((slot) =>
     slot.addEventListener("click", () => {
@@ -28,15 +28,20 @@ export const GameLoop = (playerName, ShipArrangement, arrangementInputAI) => {
             Number(desiredValue[0]) - 10,
             Number(desiredValue[1]) - 10,
           ];
-          console.log(`player's attack:${desiredValue}`);
+          //console.log(`player's attack:${desiredValue}`);
           slot.className = " ";
           player1.playerAttack(desiredValue);
           AI.thisGameboard.receiveAttack(desiredValue[0], desiredValue[1])
             ? slot.classList.add("hitAttacks")
             : slot.classList.add("missed");
 
+          if (AI.thisGameboard.allShipsSunk()) {
+            bottomDisplayText(`${player1.thisPlayerName} won`);
+            return;
+          }
+
           let attack = AI.playerAttack([1, 1]);
-          console.log(`computer attack:${attack}`);
+          //console.log(`computer attack:${attack}`);
           const attackSpot = document.getElementById(
             `${attack[1]},${attack[0]}`
           );
@@ -48,12 +53,11 @@ export const GameLoop = (playerName, ShipArrangement, arrangementInputAI) => {
               ? attackSpot.classList.add("hitAttacks")
               : attackSpot.classList.add("missed");
             playerTurn = true;
+            if (player1.thisGameboard.allShipsSunk()) {
+              bottomDisplayText("computer won");
+            }
           }, 2000);
         }
-      } else {
-        player1.thisGameboard.allShipsSunk()
-          ? bottomDisplayText("computer won")
-          : bottomDisplayText(`${player1.thisPlayerName} won`);
       }
     })
   );
