@@ -210,3 +210,12 @@ body {
   text-align: center;
   grid-area: 1/2/2/3;
 }
+
+.instructions {
+  font-size: 60%;
+  grid-area: 1/3/3/4;
+}
+
+.instructions > .instructionTitle {
+  font-size: 120%;
+}
