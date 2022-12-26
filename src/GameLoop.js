@@ -16,8 +16,8 @@ export const GameLoop = (
   intiateGameboards(player1);
   const slots = document.querySelectorAll(".enemySlot");
 
-  // console.log(player1.thisGameboard.showShips());
-  console.log(AI.thisGameboard.showShips());
+  //  console.log(player1.thisGameboard.showShips());
+  // console.log(AI.thisGameboard.showShips());
 
   slots.forEach((slot) =>
     slot.addEventListener("click", () => {

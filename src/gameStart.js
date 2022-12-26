@@ -52,14 +52,14 @@ export function gameStarter() {
               );
               element.className = " ";
               element.classList.add("occupied");
-              console.log(`${desiredInput[0] + i},${desiredInput[1]}`);
+             // console.log(`${desiredInput[0] + i},${desiredInput[1]}`);
             } else {
               let element = document.getElementById(
                 `${desiredInput[0]},${desiredInput[1] + i}`
               );
               element.className = " ";
               element.classList.add("occupied");
-              console.log(`${desiredInput[0]},${desiredInput[1] + i}`);
+              //console.log(`${desiredInput[0]},${desiredInput[1] + i}`);
             }
           }
           placementCounter++;
